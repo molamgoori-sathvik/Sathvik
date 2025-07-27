@@ -1,0 +1,444 @@
+/* Custom CSS for a more advanced look */
+
+/* Variables for easier theming */
+:root {
+    --primary-color: #4fed71; /* Bootstrap blue */
+    --secondary-color: #6c757d; /* Bootstrap gray */
+    --accent-color-1: #28a745; /* Green for vendors */
+    --accent-color-2: #48cce1; /* Cyan for businesses */
+    --dark-bg: #212529; /* Darker background for footer/contact */
+    --light-bg: #f8f9fa; /* Light background for sections */
+    --text-dark: #333;
+    --text-light: #f8f9fa;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* General Body Styles */
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-dark);
+    padding-top: 70px; /* To prevent content from being hidden by fixed navbar */
+    background-color: var(--light-bg);
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+/* Navbar Customization */
+.navbar {
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    padding-top: 0.9rem; /* Increased vertical padding */
+    padding-bottom: 0.9rem; /* Increased vertical padding */
+}
+
+.navbar-brand {
+    font-family: var(--font-heading);
+    /* font-size: 1.8rem; Removed this to give specific control to the span */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically align items */
+}
+
+.navbar-brand img {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: rgba(200, 200, 200, 0.2);
+    padding: 2px;
+    margin-right: 0.75rem !important; /* Increased margin for more space next to text */
+    transition: transform 0.3s ease;
+}
+
+/* Specific font size for the brand text for more control */
+.navbar-brand span {
+    font-size: 1.6rem; /* Slightly reduced for better fit, but still prominent */
+    transition: color 0.3s ease;
+    line-height: 1; /* Ensure text sits well with image */
+}
+
+.navbar-brand:hover span {
+    color: var(--primary-color) !important; /* Change color on hover */
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--text-dark);
+    padding: 0.7rem 1.4rem; /* Significantly more horizontal padding */
+    position: relative;
+    transition: color 0.3s ease-in-out;
+    font-size: 1rem; /* Keeping it at 1rem, slightly larger than previous to make it readable with more space */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(0);
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Add margin between the nav links and the buttons */
+.navbar-collapse .d-flex {
+    margin-left: 2rem; /* Added custom margin for larger screens */
+    /* Use ms-auto on ul.navbar-nav in HTML to push it to the left and d-flex to the right */
+}
+
+/* Adjust button sizes for less congestion in nav */
+.navbar .btn {
+    padding: 0.5rem 1.2rem; /* Slightly more padding for touch/click */
+    font-size: 0.95rem; /* Slightly increased for readability */
+    border-radius: 0.4rem;
+}
+
+.btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue */
+    border-color: #0056b3;
+}
+
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/hero-bg.jpg') no-repeat center center/cover;
+    height: 80vh; /* More prominent hero */
+    min-height: 550px;
+    position: relative;
+    padding-top: 100px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide overflow for potential animations */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.05" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zm0 6H4L6 4v1z"/%3E%3C/g%3E%3C/svg%3E'); /* Subtle diagonal pattern */
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2; /* Ensure text is above overlay */
+}
+
+.hero-section h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    animation-duration: 1s; /* Animate.css properties */
+}
+
+.hero-section .lead {
+    font-size: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    animation-duration: 1.5s;
+}
+
+/* Custom button styles for Hero Section */
+.custom-btn-hero-supplier {
+    background-color: var(--accent-color-1);
+    border-color: var(--accent-color-1);
+    font-weight: 600;
+    padding: 15px 35px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+.custom-btn-hero-supplier:hover {
+    background-color: #218838; /* Darker green */
+    border-color: #218838;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.6);
+}
+
+.custom-btn-hero-buyer {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+    font-weight: 600;
+    padding: 15px 35px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+.custom-btn-hero-buyer:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Section Headings */
+h2.display-4 {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 3.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px; /* More space for underline */
+}
+
+h2.display-4::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px; /* Wider underline */
+    height: 5px; /* Thicker underline */
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+#for-vendors h2.display-4::after {
+    background-color: var(--accent-color-1);
+}
+
+#for-businesses h2.display-4::after {
+    background-color: var(--accent-color-2);
+}
+
+
+/* How It Works Section */
+#how-it-works .feature-card {
+    border: none !important; /* Remove default bootstrap border */
+    border-radius: 15px; /* More rounded */
+    transition: all 0.3s ease-in-out;
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+#how-it-works .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.icon-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px; /* Larger circles */
+    height: 80px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color-2)); /* Gradient background */
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    color: #fff; /* Icons white */
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+#how-it-works .feature-card:hover .icon-circle {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Feature Cards (For Vendors/Businesses) */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Lighter, more subtle shadow */
+}
+
+.card:hover {
+    transform: translateY(-8px); /* Slightly more lift */
+    box-shadow: 0 12px 25px rgba(0,0,0,.15); /* More prominent shadow on hover */
+}
+
+.card-body i {
+    font-size: 3.5rem; /* Larger icons */
+    margin-bottom: 1rem;
+    /* Specific icon colors will be managed by Bootstrap text classes */
+}
+
+/* Contact Us Section */
+#contact {
+    background: linear-gradient(to right, #2c3e50, #34495e); /* Darker, gradient background */
+    color: var(--text-light);
+    padding: 6rem 0;
+}
+
+#contact h2.display-4::after {
+    background-color: var(--primary-color);
+}
+
+#contact .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+#contact .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+#contact .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#contact .form-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#contact .social-icons a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+#contact .social-icons a:hover {
+    color: var(--primary-color) !important;
+    transform: translateY(-3px);
+}
+
+.contact-info li {
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-bg);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+footer a {
+    color: var(--text-light);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+footer a:hover {
+    opacity: 1;
+}
+
+/* Modals */
+.modal-content {
+    border-radius: 12px; /* More rounded modals */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.modal-header {
+    border-bottom: none;
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.modal-body {
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+.modal-footer {
+    border-top: none;
+    padding: 0.5rem 1.5rem 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 992px) { /* Applies to large (lg) and up */
+    .navbar-collapse .d-flex {
+        margin-left: 3rem; /* Increased separation between nav links and buttons on larger screens */
+    }
+}
+
+@media (max-width: 991.98px) { /* Applies to medium (md) and down */
+    .navbar-collapse {
+        background-color: #fff;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+    }
+    .navbar-nav {
+        margin-bottom: 1rem;
+    }
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+    .hero-section .lead {
+        font-size: 1.1rem;
+    }
+    h2.display-4 {
+        font-size: 2.2rem;
+    }
+    h2.display-4::after {
+        width: 60px;
+    }
+    /* Adjustments for mobile nav links and buttons to be less congested */
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem; /* Less padding in mobile to save space */
+        font-size: 1rem;
+    }
+    .navbar .btn {
+        display: block; /* Make buttons stack */
+        width: calc(100% - 2rem); /* Full width with some padding */
+        margin: 0.5rem auto; /* Center them */
+        padding: 0.6rem 1rem; /* Slightly larger for touch */
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        height: auto;
+        padding: 120px 0 60px;
+        text-align: center;
+    }
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    .hero-section .lead {
+        font-size: 1rem;
+    }
+    .custom-btn-hero-supplier,
+    .custom-btn-hero-buyer {
+        display: block;
+        width: 80%;
+        margin: 15px auto;
+    }
+    h2.display-4 {
+        font-size: 1.8rem;
+    }
+    .card-body i {
+        font-size: 2.5rem;
+    }
+    .contact-info li {
+        font-size: 1rem;
+    }
+}
